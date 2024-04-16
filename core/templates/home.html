@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<div class="qbootstrap-hero" data-section="home">
+		<div class="qbootstrap-overlay"></div>
+		<div class="qbootstrap-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_3.jpg);">
+			<div class="display-t">
+				<div class="display-tc">
+					<div class="container">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="animate-box svg-sm colored">
+								<img src="{% static 'images/flaticon/svg/004-nature.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+								<h1 class="holder"><span>O casamento de</span></h1>
+								<h2>David &amp; Renata</h2>
+								<p>22.07.2017</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="qbootstrap-couple" class="qbootstrap-section-gray">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 animate-box">
+					<div class="col-md-12 text-center section-heading svg-sm colored">
+						<img src="{% static 'images/flaticon/svg/005-two.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<h2>Estão se casando</h2>
+						<p>“Pois onde estiver o amor, ali estará também o nosso coração.”  ****– Lc. 12:34</p>
+						<p><strong>em julho de 2017</strong></p>
+					</div>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="col-md-5 col-sm-5 col-xs-5 nopadding">
+						<img src="{% static 'images/groom.jpg' %}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<h3>David Roberson N Castro</h3>
+						<span>Noivo</span>
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 class="amp-center"><img src="{% static 'images/flaticon/svg/003-luxury.svg' %}" class="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com"></h2></div>
+					<div class="col-md-5 col-sm-5 col-xs-5 nopadding">
+						<img src="{% static 'images/bride.jpg' %}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<h3>Renata Lais S. de Castro</h3>
+						<span>Noiva</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="qbootstrap-countdown" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_2.jpg);" data-section="wedding-day">
+		<div class="overlay"></div>
+		<div class="display-over">
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-12 section-heading text-center svg-sm colored">
+						<img src="{% static 'images/flaticon/svg/006-flower-bell-outline-design-variant-with-vines-and-leaves.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<h2 class="">O dia do casamento</h2>
+						<span class="datewed">Saturday, jul. 22, 2017</span>
+					</div>
+				</div>
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<p class="countdown">
+							<span id="days"></span>
+							<span id="hours"></span>
+							<span id="minutes"></span>
+							<span id="seconds"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    {% endblock %}

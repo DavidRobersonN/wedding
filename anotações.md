@@ -62,3 +62,11 @@ alterar o arquivo core.urls
     urlpatterns = [
         path('', IndexView.as_view(), name='index')
     ]
+
+Começar editando os arquivos html, fazendo alterações para poder usar os arquivos estaticos, por exemplo deve ficar desta forma:
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+Precisa tambem colocar o seguinte codigo no cabeçado da pagina, para eu possa carregar os arquivos estaticos:
+    {% load static %}
+
