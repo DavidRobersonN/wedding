@@ -16,31 +16,22 @@ class Base(models.Model):
         abstract = True
 
 class People(Base):
-
-    nome = models.CharField('Nome', max_length=100)
-    imagem = StdImageField('Imagem', upload_to=get_file_path,
-                           variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
     facebook = models.CharField('Facebook', max_length=100, default='#')
     twitter = models.CharField('Twitter', max_length=100, default='#')
     instagram = models.CharField('Instagram', max_length=100, default='#')
+    nome = models.CharField('Nome', max_length=100)
+    imagem = StdImageField('Imagem', upload_to=get_file_path,
+                           variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
 
     class Meta:
-        verbose_name = 'Pessoa'
-        verbose_name_plural = 'Pessoas'
-
-    def __str__(self):
-        return self.nome
+        abstract = True
 
 class Noivo(People):
-
     bio = models.TextField('Bio', max_length=200)
-
     def __str__(self):
         return self.nome
 
 class Noiva(People):
-
     bio = models.TextField('Bio', max_length=200)
-
     def __str__(self):
         return self.nome
