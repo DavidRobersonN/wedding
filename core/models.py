@@ -20,24 +20,35 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-
 class Padrinho(Base):
     CHOICES = (
         ('noivo', 'noivo'),
         ('noiva', 'noiva'),
     )
-    ladoFamilia = models.CharField('ladoFamilia', max_length=12, choices=CHOICES)
-    def __str__(self):
-        return self.nome
-
-class Noivo(Base):
-    bio = models.TextField('Bio', max_length=200)
+    ladoFamilia = models.CharField('ladoFamilia', max_length=5, choices=CHOICES)
+    class Meta:
+        verbose_name = 'Padrinho'
+        verbose_name_plural = 'Padrinhos'
 
     def __str__(self):
         return self.nome
 
 class Noiva(Base):
-    bio = models.TextField('Bio', max_length=200)
+    bio = models.TextField(max_length=100, null=True)
+
+    class Meta:
+        verbose_name = 'Noiva'
+        verbose_name_plural = 'Noivas'
+
+    def __str__(self):
+        return self.nome
+
+class Noivo(Base):
+
+    bio = models.TextField(max_length=100, null=True)
+    class Meta:
+        verbose_name = 'Noivo'
+        verbose_name_plural = 'Noivos'
 
     def __str__(self):
         return self.nome

@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Noivo, Noiva
+from .models import Padrinho, Noiva, Noivo
 
 class IndexView(TemplateView):
     template_name = 'index.html'
