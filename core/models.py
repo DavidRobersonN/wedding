@@ -42,3 +42,13 @@ class Noiva(Base):
 
     def __str__(self):
         return self.nome
+
+class Noivo(Base):
+    descricao = models.TextField(max_length=100, null=True, default='')
+
+    class Meta:
+        verbose_name = 'Noivo'
+        verbose_name_plural = 'Noivos'
+
+    def __str__(self):
+        return self.nome
