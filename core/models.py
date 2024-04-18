@@ -34,21 +34,11 @@ class Padrinho(Base):
         return self.nome
 
 class Noiva(Base):
-    bio = models.TextField(max_length=100, null=True)
+    bio = models.TextField(max_length=100, null=True, default='')
 
     class Meta:
         verbose_name = 'Noiva'
         verbose_name_plural = 'Noivas'
-
-    def __str__(self):
-        return self.nome
-
-class Noivo(Base):
-
-    bio = models.TextField(max_length=100, null=True)
-    class Meta:
-        verbose_name = 'Noivo'
-        verbose_name_plural = 'Noivos'
 
     def __str__(self):
         return self.nome
