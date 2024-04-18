@@ -44,7 +44,7 @@ class Noiva(Base):
         return self.nome
 
 class Noivo(Base):
-    descricao = models.TextField(max_length=100, null=True, default='')
+    bio = models.TextField(max_length=100, null=True, default='')
 
     class Meta:
         verbose_name = 'Noivo'
