@@ -8,4 +8,5 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['noiva'] = Noiva.objects.first()
         context['noivo'] = Noivo.objects.first()
+        context['padrinho'] = Padrinho.objects.all()
         return context

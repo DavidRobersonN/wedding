@@ -22,10 +22,10 @@ class Base(models.Model):
 
 class Padrinho(Base):
     CHOICES = (
-        ('noivo', 'noivo'),
-        ('noiva', 'noiva'),
+        ('padrinho', 'padrinho'),
+        ('madrinha', 'madrinha'),
     )
-    ladoFamilia = models.CharField('ladoFamilia', max_length=5, choices=CHOICES)
+    genero = models.CharField('ladoFamilia', max_length=5, choices=CHOICES)
     class Meta:
         verbose_name = 'Padrinho'
         verbose_name_plural = 'Padrinhos'
