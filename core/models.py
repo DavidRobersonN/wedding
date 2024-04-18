@@ -20,6 +20,7 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
+
 class Padrinho(Base):
     CHOICES = (
         ('padrinho', 'padrinho'),
@@ -34,6 +35,7 @@ class Padrinho(Base):
     def __str__(self):
         return self.nome
 
+
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
 
@@ -43,6 +45,7 @@ class Noiva(Base):
 
     def __str__(self):
         return self.nome
+
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
