@@ -42,7 +42,6 @@ class Noivo(Base):
 
 class Madrinha(Base):
     nome = models.CharField('Nome', max_length=100)
-    noiva = models.ForeignKey(Noiva, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Madrinha'
@@ -53,7 +52,6 @@ class Madrinha(Base):
 
 class Padrinho(Base):
     nome = models.CharField('Nome', max_length=100)
-    noivo = models.ForeignKey(Noivo, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Madrinha'
