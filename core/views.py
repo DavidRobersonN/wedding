@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Noiva, Noivo, Padrinho, Madrinha
+from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor
 from django.http import Http404
 
 class IndexView(TemplateView):
@@ -20,4 +20,6 @@ class IndexView(TemplateView):
         context['noivo'] = noivo
         context['padrinhos'] = Padrinho.objects.all()
         context['madrinhas'] = Madrinha.objects.all()
+        context['casamento'] = Casamento.objects.first()
+        context['historias'] = HistoriaDeAmor.objects.all()
         return context

@@ -8,67 +8,31 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="col-md-12 text-center section-heading svg-sm-2">
 						<img src="{% static 'images/flaticon/svg/003-luxury.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
-						<h2>Our Love Story</h2>
+						<h2>Sua História de Amor</h2>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<ul class="timeline animate-box">
-						<li class="animate-box">
+                        {% for historia in historias %}
+						<li class="animate-box {% cycle 'timeline-inverted' '' %}">
 							<div class="timeline-badge" style="background-image:url(images/couple-1.jpg);"></div>
 							<div class="timeline-panel">
 								<div class="overlay"></div>
 								<div class="timeline-heading">
-									<h3 class="timeline-title">First We Meet</h3>
-									<span class="date">June 10, 2017</span>
+									<h3 class="timeline-title">{{ historia.titulo }}</h3>
+									<span class="date">{{ historia.data }}</span>
 								</div>
 								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in .</p>
+									<p>{{ historia.conteudo }}</p>
 								</div>
 							</div>
 						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-2.jpg);"></div>
-							<div class="timeline-panel">
-								<div class="overlay overlay-2"></div>
-								<div class="timeline-heading">
-									<h3 class="timeline-title">First Date</h3>
-									<span class="date">June 10, 2017</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in .</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-3.jpg);"></div>
-							<div class="timeline-panel">
-								<div class="overlay"></div>
-								<div class="timeline-heading">
-									<h3 class="timeline-title">In A Relationship</h3>
-									<span class="date">June 14, 2017</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in .</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-4.jpg);"></div>
-							<div class="timeline-panel">
-								<div class="overlay overlay-2"></div>
-								<div class="timeline-heading">
-									<h3 class="timeline-title">We're Engaged</h3>
-									<span class="date">Sept. 01, 2017</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in .</p>
-								</div>
-							</div>
-						</li>
+                        {% endfor %}
 			    	</ul>
-				</div>
+				</div>We're Engaged
+
 			</div>
 		</div>
 	</div>

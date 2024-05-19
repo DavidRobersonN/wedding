@@ -12,7 +12,7 @@
 								<img src="{% static 'images/flaticon/svg/004-nature.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
 								<h1 class="holder"><span>O casamento de</span></h1>
 								<h2>{{ noivo.nome}} & {{ noiva.nome }}</h2>
-								<p>22.07.2017</p>
+								<p>{{ casamento.dataCerimonia }}</p>
 							</div>
 						</div>
 					</div>
@@ -29,21 +29,21 @@
 						<img src="{% static 'images/flaticon/svg/005-two.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
 						<h2>Estão se casando</h2>
 						<p>“Pois onde estiver o amor, ali estará também o nosso coração.”  ****– Lc. 12:34</p>
-						<p><strong>em julho de 2017</strong></p>
+						<p><strong>{{ casamento.dataCerimonia }}</strong></p>
 					</div>
 				</div>
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="col-md-5 col-sm-5 col-xs-5 nopadding">
-						<img src="{% static 'images/groom.jpg' %}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
-						<h3>David Roberson N Castro</h3>
+						<img src="{{ noivo.imagem.thumb.url }}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<h3>{{ noivo.nome }}</h3>
 						<span>Noivo</span>
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 class="amp-center"><img src="{% static 'images/flaticon/svg/003-luxury.svg' %}" class="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com"></h2></div>
 					<div class="col-md-5 col-sm-5 col-xs-5 nopadding">
-						<img src="{% static 'images/bride.jpg' %}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
-						<h3>Renata Lais S. de Castro</h3>
+						<img src="{{ noiva.imagem.thumb.url }}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<h3>{{ noiva.nome }}</h3>
 						<span>Noiva</span>
 					</div>
 				</div>
