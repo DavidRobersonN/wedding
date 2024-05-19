@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 from stdimage.models import StdImageField
-from datetime import datetime
 
 def get_file_path(_instance, filename):
     ext = filename.split('.')[-1]
@@ -20,22 +19,6 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-
-class Padrinho(Base):
-    CHOICES = (
-        ('padrinho', 'padrinho'),
-        ('madrinha', 'madrinha'),
-    )
-    genero = models.CharField('gênero', max_length=10, choices=CHOICES, default=None, null=True)
-
-    class Meta:
-        verbose_name = 'Padrinho'
-        verbose_name_plural = 'Padrinhos'
-
-    def __str__(self):
-        return self.nome
-
-
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
 
@@ -46,13 +29,35 @@ class Noiva(Base):
     def __str__(self):
         return self.nome
 
-
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
+    noiva = models.OneToOneField(Noiva, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Noivo'
         verbose_name_plural = 'Noivos'
+
+    def __str__(self):
+        return self.nome
+
+class Madrinha(Base):
+    nome = models.CharField('Nome', max_length=100)
+    noiva = models.ForeignKey(Noiva, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Madrinha'
+        verbose_name_plural = 'Madrinhas'
+
+    def __str__(self):
+        return self.nome
+
+class Padrinho(Base):
+    nome = models.CharField('Nome', max_length=100)
+    noivo = models.ForeignKey(Noivo, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Madrinha'
+        verbose_name_plural = 'Madrinhas'
 
     def __str__(self):
         return self.nome
