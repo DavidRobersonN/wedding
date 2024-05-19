@@ -18,12 +18,14 @@
 				</div>
 			</div>
 			<div class="row row-bottom-padded-lg">
+				{% for p in padrinhos %}
 				<div class="col-md-3 text-center animate-box">
 					<div class="groom-men">
 						<img src="{{ p.imagem.thumb.url }}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
 						<h3></h3>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2">
@@ -34,12 +36,14 @@
 				</div>
 			</div>
 			<div class="row">
+				{% for m in madrinhas %}
 				<div class="col-md-3 text-center animate-box">
 					<div class="groom-men">
-						<img src="{{ p.imagem.thumb.url }}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+						<img src="{{ m.imagem.thumb.url }}" class="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
 						<h3></h3>
 					</div>
 				</div>
+				{% endfor %}
 		</div>
 	</div>
 </section>

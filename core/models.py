@@ -20,7 +20,6 @@ class Base(models.Model):
 
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
-    madrinhas = models.ForeignKey('Madrinha', on_delete=models.CASCADE, related_name='noivas')
 
     class Meta:
         verbose_name = 'Noiva'
@@ -31,7 +30,6 @@ class Noiva(Base):
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
-    padrinhos = models.ForeignKey('Padrinho', on_delete=models.CASCADE, related_name='noivos')
 
     class Meta:
         verbose_name = 'Noivo'
@@ -41,6 +39,8 @@ class Noivo(Base):
         return self.nome
 
 class Madrinha(Base):
+    noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='madrinhas')
+
     class Meta:
         verbose_name = 'Madrinha'
         verbose_name_plural = 'Madrinhas'
@@ -49,6 +49,8 @@ class Madrinha(Base):
         return self.nome
 
 class Padrinho(Base):
+    noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='padrinhos')
+
     class Meta:
         verbose_name = 'Padrinho'
         verbose_name_plural = 'Padrinhos'

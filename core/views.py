@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Noiva, Noivo
+from .models import Noiva, Noivo, Padrinho, Madrinha
 
 
 class IndexView(TemplateView):
@@ -11,6 +11,6 @@ class IndexView(TemplateView):
         noiva = Noiva.objects.get(pk=1)
         context['noiva'] = noiva
         context['noivo'] = noivo
-        context['padrinhos'] = noivo.padrinhos.all()
-        context['madrinhas'] = noiva.madrinhas.all()
+        context['padrinhos'] = Padrinho.objects.all()
+        context['madrinhas'] = Madrinha.objects.all()
         return context
