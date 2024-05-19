@@ -10,11 +10,10 @@ class PadrinhoAdmin(admin.ModelAdmin):
 class MadrinhaAdmin(admin.ModelAdmin):
     list_display = ('nome',)
 
-@admin.register(Noiva)
-class NoivaAdmin(admin.ModelAdmin):
-    list_display = ('nome',)
-
-
 @admin.register(Noivo)
 class NoivoAdmin(admin.ModelAdmin):
     list_display = ('nome',)
+
+@admin.register(Noiva)
+class NoivaAdmin(admin.ModelAdmin):
+    list_display = ('nome', )

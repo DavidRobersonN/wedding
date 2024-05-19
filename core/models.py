@@ -31,7 +31,6 @@ class Noiva(Base):
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
-    noiva = models.OneToOneField(Noiva, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Noivo'
