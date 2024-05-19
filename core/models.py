@@ -11,7 +11,6 @@ class Base(models.Model):
     nome = models.CharField('Nome', max_length=100)
     imagem = StdImageField('Imagem', upload_to=get_file_path,
                            variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
-
     facebook = models.CharField('Facebook', max_length=100, default='#')
     twitter = models.CharField('Twitter', max_length=100, default='#')
     instagram = models.CharField('Instagram', max_length=100, default='#')
@@ -21,6 +20,7 @@ class Base(models.Model):
 
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
+    madrinhas = models.ForeignKey('Madrinha', on_delete=models.CASCADE, related_name='noivas')
 
     class Meta:
         verbose_name = 'Noiva'
@@ -31,6 +31,7 @@ class Noiva(Base):
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
+    padrinhos = models.ForeignKey('Padrinho', on_delete=models.CASCADE, related_name='noivos')
 
     class Meta:
         verbose_name = 'Noivo'
@@ -40,8 +41,6 @@ class Noivo(Base):
         return self.nome
 
 class Madrinha(Base):
-    nome = models.CharField('Nome', max_length=100)
-
     class Meta:
         verbose_name = 'Madrinha'
         verbose_name_plural = 'Madrinhas'
@@ -50,11 +49,9 @@ class Madrinha(Base):
         return self.nome
 
 class Padrinho(Base):
-    nome = models.CharField('Nome', max_length=100)
-
     class Meta:
-        verbose_name = 'Madrinha'
-        verbose_name_plural = 'Madrinhas'
+        verbose_name = 'Padrinho'
+        verbose_name_plural = 'Padrinhos'
 
     def __str__(self):
         return self.nome
