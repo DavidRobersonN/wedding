@@ -9,13 +9,6 @@ def get_file_path(_instance, filename):
     return filename
 
 
-class SaudacaoNoivo(models.Model):
-    saudacao = models.CharField(max_length=255)
-
-    class Meta:
-        verbose_name = 'Saudação'
-        verbose_name_plural = 'Saudações'
-
 class Base(models.Model):
     nome = models.CharField('Nome', max_length=100)
     imagem = StdImageField('Imagem', upload_to=get_file_path,
@@ -41,7 +34,6 @@ class Noiva(Base):
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
-    saudacao = models.ForeignKey(SaudacaoNoivo, on_delete=models.CASCADE, related_name='saudacao')
 
     class Meta:
         verbose_name = 'Noivo'
@@ -72,7 +64,6 @@ class Padrinho(Base):
     def __str__(self):
         return self.nome
 
-
 class Casamento(models.Model):
     noivo = models.ForeignKey(Noivo, on_delete=models.CASCADE, related_name='casamentos')
     dataCerimonia = models.DateField(verbose_name='Data da Cerimonia')
@@ -86,7 +77,6 @@ class Casamento(models.Model):
     def __str__(self):
         return f'Casamento de {self.noivo.nome}'
 
-
 class HistoriaDeAmor(models.Model):
     casamento = models.ForeignKey(Casamento, on_delete=models.CASCADE, related_name='historias')
     titulo = models.CharField(max_length=100)
@@ -98,5 +88,4 @@ class HistoriaDeAmor(models.Model):
 
     def __str__(self):
         return self.titulo
-
 
