@@ -7,8 +7,19 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        noivo = Noivo.objects.get(pk=1)
-        noiva = Noiva.objects.get(pk=1)
+
+        try:
+            noivo = Noivo.objects.get(pk=1)
+        except Noivo.DoesNotExist:
+            noivo = None
+            context['noivo_error'] = "Nenhum Noivo cadastrado."
+
+        try:
+            noiva = Noiva.objects.get(pk=1)
+        except Noiva.DoesNotExist:
+            noiva = None
+            context['noiva_error'] = "Nenhuma Noiva cadastrada."
+
         context['noiva'] = noiva
         context['noivo'] = noivo
         context['padrinhos'] = Padrinho.objects.all()
