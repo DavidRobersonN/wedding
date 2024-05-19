@@ -39,7 +39,7 @@ class Noivo(Base):
         return self.nome
 
 class Madrinha(Base):
-    noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='madrinhas')
+    noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='madrinhas', null=True)
 
     class Meta:
         verbose_name = 'Madrinha'
@@ -49,7 +49,7 @@ class Madrinha(Base):
         return self.nome
 
 class Padrinho(Base):
-    noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='padrinhos')
+    noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='padrinhos', null=True)
 
     class Meta:
         verbose_name = 'Padrinho'
