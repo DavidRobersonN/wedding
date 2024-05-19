@@ -64,7 +64,8 @@ class Padrinho(Base):
     def __str__(self):
         return self.nome
 
-class Casamento(Noivo):
+class Casamento(models.Model):
+    noivo = models.ForeignKey(Noivo, on_delete=models.CASCADE, related_name='casamentos')
     dataCerimonia = models.DateField(verbose_name='Data da Cerimonia')
 
     class Meta:
@@ -72,4 +73,4 @@ class Casamento(Noivo):
         verbose_name_plural = 'Casamentos'
 
     def __str__(self):
-        return f'Casamento de {self.nome}'
+        return f'Casamento de {self.noivo.nome}'
