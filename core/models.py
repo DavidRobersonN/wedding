@@ -2,10 +2,12 @@ from django.db import models
 import uuid
 from stdimage.models import StdImageField
 
+
 def get_file_path(_instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
     return filename
+
 
 class Base(models.Model):
     nome = models.CharField('Nome', max_length=100)
@@ -18,6 +20,7 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
+
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
 
@@ -27,6 +30,7 @@ class Noiva(Base):
 
     def __str__(self):
         return self.nome
+
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
@@ -38,6 +42,7 @@ class Noivo(Base):
     def __str__(self):
         return self.nome
 
+
 class Madrinha(Base):
     noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='madrinhas', null=True)
 
@@ -48,6 +53,7 @@ class Madrinha(Base):
     def __str__(self):
         return self.nome
 
+
 class Padrinho(Base):
     noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='padrinhos', null=True)
 
@@ -57,3 +63,13 @@ class Padrinho(Base):
 
     def __str__(self):
         return self.nome
+
+class Casamento(Noivo):
+    dataCerimonia = models.DateField(verbose_name='Data da Cerimonia')
+
+    class Meta:
+        verbose_name = 'Casamento'
+        verbose_name_plural = 'Casamentos'
+
+    def __str__(self):
+        return f'Casamento de {self.nome}'
