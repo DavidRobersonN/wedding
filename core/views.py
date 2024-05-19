@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Padrinho, Madrinha, Noiva, Noivo
+from .models import Noiva, Noivo
 
 
 class IndexView(TemplateView):
@@ -7,8 +7,10 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['noiva'] = Noiva.objects.first()
-        context['noivo'] = Noivo.objects.first()
-        context['padrinho'] = Padrinho.objects.all()
-        context['madrinha'] = Madrinha.objects.all()
+        noivo = Noivo.objects.get(pk=1)
+        noiva = Noiva.objects.get(pk=1)
+        context['noiva'] = noiva
+        context['noivo'] = noivo
+        context['padrinhos'] = noivo.padrinhos.all()
+        context['madrinhas'] = noiva.madrinhas.all()
         return context
