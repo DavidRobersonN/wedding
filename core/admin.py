@@ -33,6 +33,6 @@ class CasamentoAdmin(admin.ModelAdmin):
 class HistoriaDeAmor(admin.ModelAdmin):
     list_display = ('titulo',)
 
-@admin.register()
+@admin.register(Saudacao)
 class SaudacoesAdmin(admin.ModelAdmin):
     pass
