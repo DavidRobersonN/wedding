@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor
+from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor, Saudacao
 
 
 @admin.register(Padrinho)
@@ -30,5 +30,9 @@ class CasamentoAdmin(admin.ModelAdmin):
 
 
 @admin.register(HistoriaDeAmor)
-class HistoriaDeAmor(admin.ModelAdmin):
+class HistoriaDeAmorAdmin(admin.ModelAdmin):
     list_display = ('titulo',)
+
+@admin.register()
+class SaudacaoAdmin(admin.ModelAdmin):
+    list_display = ('saudacaoNoivo',)
