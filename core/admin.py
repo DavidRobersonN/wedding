@@ -30,7 +30,7 @@ class CasamentoAdmin(admin.ModelAdmin):
 
 
 @admin.register(HistoriaDeAmor)
-class HistoriaDeAmorAdmin(admin.ModelAdmin):
+class HistoriaDeAmor(admin.ModelAdmin):
     list_display = ('titulo',)
 
 @admin.register()
