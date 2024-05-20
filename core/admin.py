@@ -34,5 +34,5 @@ class HistoriaDeAmorAdmin(admin.ModelAdmin):
     list_display = ('titulo',)
 
 @admin.register()
-class SaudacaoAdmin(admin.ModelAdmin):
-    list_display = ('saudacaoNoivo',)
+class SaudacoesAdmin(admin.ModelAdmin):
+    pass
