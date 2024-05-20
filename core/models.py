@@ -64,6 +64,7 @@ class Padrinho(Base):
     def __str__(self):
         return self.nome
 
+
 class Casamento(models.Model):
     noivo = models.ForeignKey(Noivo, on_delete=models.CASCADE, related_name='casamentos')
     dataCerimonia = models.DateField(verbose_name='Data da Cerimonia')
@@ -77,6 +78,7 @@ class Casamento(models.Model):
     def __str__(self):
         return f'Casamento de {self.noivo.nome}'
 
+
 class HistoriaDeAmor(models.Model):
     casamento = models.ForeignKey(Casamento, on_delete=models.CASCADE, related_name='historias')
     titulo = models.CharField(max_length=100)
@@ -89,3 +91,16 @@ class HistoriaDeAmor(models.Model):
     def __str__(self):
         return self.titulo
 
+
+class Saudacao(models.Model):
+    saudacaoNoivo = models.ForeignKey(Noivo, on_delete=models.CASCADE, related_name='saudacaoNoivo', null=True,
+                                      blank=True)
+    saudacaoNoiva = models.ForeignKey(Noiva, on_delete=models.CASCADE, related_name='saudacaoNoiva', null=True,
+                                      blank=True)
+
+    class Meta:
+        verbose_name = 'Saudação'
+        verbose_name_plural = 'Saudações'
+
+    def __str__(self):
+        return f'Saudação de {self.noivo.nome} & {self.noiva.nome}'
