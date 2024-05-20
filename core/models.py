@@ -97,6 +97,7 @@ class Saudacao(models.Model):
                                       blank=True)
     saudacaoNoiva = models.ForeignKey(Noiva, on_delete=models.CASCADE, related_name='saudacaoNoiva', null=True,
                                       blank=True)
+    conteudo = models.TextField()
 
     class Meta:
         verbose_name = 'Saudação'
