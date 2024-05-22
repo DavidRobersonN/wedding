@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 import uuid
 from stdimage.models import StdImageField
@@ -23,6 +24,7 @@ class Base(models.Model):
 
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
+    noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='noiva_relacionada', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Noiva'
@@ -34,6 +36,7 @@ class Noiva(Base):
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
+    noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='noivo_relacionado', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Noivo'
@@ -69,7 +72,18 @@ class Casamento(models.Model):
     noivo = models.ForeignKey(Noivo, on_delete=models.CASCADE, related_name='casamentos')
     dataCerimonia = models.DateField(verbose_name='Data da Cerimonia')
     endereco = models.CharField(max_length=255, blank=True, null=True)  # Campo para endereço
+    horaInicioCerimonia = models.TimeField(default=datetime.time(12, 0), blank=True, null=True)
+    horaTerminoCerimonia = models.TimeField(default=datetime.time(12, 0), blank=True, null=True)
+    horaInicioFesta = models.TimeField(default=datetime.time(12, 0), blank=True, null=True)
+    horaTerminoFesta = models.TimeField(default=datetime.time(12, 0), blank=True, null=True)
     biografiaCasal = models.CharField(max_length=255, blank=True, null=True)
+    mensagemCerimonia = models.CharField(max_length=255, blank=True, null=True)
+    mensagemFesta = models.CharField(max_length=255, blank=True, null=True)
+
+    def get_dia_da_semana(self):
+        dias_da_semana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado',
+                          'Domingo']
+        return dias_da_semana[self.dataCerimonia.weekday()]
 
     class Meta:
         verbose_name = 'Casamento'
@@ -104,4 +118,7 @@ class Saudacao(models.Model):
         verbose_name_plural = 'Saudações'
 
     def __str__(self):
-        return f'Saudação de {self.noivo.nome} & {self.noiva.nome}'
+        if self.saudacaoNoivo:
+            return self.saudacaoNoivo.nome
+        elif self.saudacaoNoiva:
+            return self.saudacaoNoiva.nome

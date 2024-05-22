@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <section id="rsvp" class="section-padding bg-gray">
-	<div id="qbootstrap-started" class="qbootstrap-bg" data-section="rsvp" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
+	<div id="qbootstrap-started" class="qbootstrap-bg" data-section="rsvp" data-stellar-background-ratio="0.5" style="background-image: url({% static 'images/cover_bg_1.jpg' %});">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row animate-box">
@@ -11,26 +11,27 @@
 						<img src="{% static 'images/flaticon/svg/005-two.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
 						<h2>You Are Invited</h2>
 						<div class="row">
-						<div class="col-md-10 col-md-offset-1 subtext">
-							<h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
+							<div class="col-md-10 col-md-offset-1 subtext">
+								<h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-10 col-md-offset-1">
-					<form class="form-inline">
+					<form method="post" class="form-inline">
+						{% csrf_token %}
 						<div class="col-md-4 col-sm-4">
 							<div class="form-group">
-								<label for="name" class="sr-only">Name</label>
-								<input type="name" class="form-control" id="name" placeholder="Name">
+								<label for="id_name" class="sr-only">Name</label>
+								{{ form.name }}
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
 							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
+								<label for="id_email" class="sr-only">Email</label>
+								{{ form.email }}
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
