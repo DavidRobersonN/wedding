@@ -11,9 +11,11 @@ def get_file_path(_instance, filename):
 
 
 class Base(models.Model):
-    nome = models.CharField('Nome', max_length=100)
+    nome = models.CharField('Nome', max_length=100, null=True,
+                            blank=True)
     imagem = StdImageField('Imagem', upload_to=get_file_path,
-                           variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
+                           variations={'thumb': {'width': 480, 'height': 480, 'crop': True}}, null=True,
+                           blank=True)
     facebook = models.CharField('Facebook', max_length=100, default='#')
     twitter = models.CharField('Twitter', max_length=100, default='#')
     instagram = models.CharField('Instagram', max_length=100, default='#')
@@ -24,7 +26,8 @@ class Base(models.Model):
 
 class Noiva(Base):
     bio = models.TextField(max_length=100, null=True, default='')
-    noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='noiva_relacionada', null=True, blank=True)
+    noivo = models.ForeignKey('Noivo', on_delete=models.CASCADE, related_name='noiva_relacionada', null=True,
+                              blank=True)
 
     class Meta:
         verbose_name = 'Noiva'
@@ -36,7 +39,8 @@ class Noiva(Base):
 
 class Noivo(Base):
     bio = models.TextField(max_length=100, null=True, default='')
-    noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='noivo_relacionado', null=True, blank=True)
+    noiva = models.ForeignKey('Noiva', on_delete=models.CASCADE, related_name='noivo_relacionado', null=True,
+                              blank=True)
 
     class Meta:
         verbose_name = 'Noivo'
@@ -79,6 +83,7 @@ class Casamento(models.Model):
     biografiaCasal = models.CharField(max_length=255, blank=True, null=True)
     mensagemCerimonia = models.CharField(max_length=255, blank=True, null=True)
     mensagemFesta = models.CharField(max_length=255, blank=True, null=True)
+    textoApresentacaoBlog = models.CharField(max_length=250, blank=True, null=True)
 
     def get_dia_da_semana(self):
         dias_da_semana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado',
@@ -93,7 +98,7 @@ class Casamento(models.Model):
         return f'Casamento de {self.noivo.nome}'
 
 
-class HistoriaDeAmor(models.Model):
+class HistoriaDeAmor(Base):
     casamento = models.ForeignKey(Casamento, on_delete=models.CASCADE, related_name='historias')
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField()
@@ -122,3 +127,26 @@ class Saudacao(models.Model):
             return self.saudacaoNoivo.nome
         elif self.saudacaoNoiva:
             return self.saudacaoNoiva.nome
+
+
+class NossoBlog(Base):
+    titulo = models.CharField(max_length=50, blank=True, null=True)
+    texto = models.CharField(max_length=250, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Blog'
+        verbose_name_plural = 'Blogs'
+
+    def __str__(self):
+        return self.titulo
+
+
+class Guest(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = 'Guest'
+        verbose_name_plural = 'Guests'
+
+    def __str__(self):
+        return self.name

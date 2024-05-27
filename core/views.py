@@ -1,6 +1,15 @@
 from django.views.generic import TemplateView
-from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor, Saudacao
+from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor, Saudacao, NossoBlog
 from django.http import Http404
+#########
+import tempfile
+from django.core.files.storage import FileSystemStorage
+from django.template.loader import render_to_string
+from weasyprint import HTML
+######
+from django.shortcuts import redirect
+from .models import Guest
+from django.shortcuts import render
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -23,4 +32,13 @@ class IndexView(TemplateView):
         context['madrinhas'] = Madrinha.objects.all()
         context['casamento'] = Casamento.objects.first()
         context['historias'] = HistoriaDeAmor.objects.all()
+        context['blog'] = NossoBlog.objects.all()
         return context
+
+
+def check_guest(request):
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        if Guest.objects.filter(name=name).exists():
+            return render(request, 'home.html')

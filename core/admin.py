@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor, Saudacao
+from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor, Saudacao, NossoBlog, Guest
 
 
 @admin.register(Padrinho)
@@ -32,7 +32,19 @@ class CasamentoAdmin(admin.ModelAdmin):
 @admin.register(HistoriaDeAmor)
 class HistoriaDeAmor(admin.ModelAdmin):
     list_display = ('titulo',)
+    exclude = ('nome', 'facebook', 'twitter', 'instagram',)
+
 
 @admin.register(Saudacao)
 class SaudacoesAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(NossoBlog)
+class NossoBlogAdmin(admin.ModelAdmin):
+    list_display = ('titulo',)
+    exclude = ('nome', 'facebook', 'twitter', 'instagram',)
+
+@admin.register(Guest)
+class GuestAdmin(admin.ModelAdmin):
+    list_display = ('name',)
