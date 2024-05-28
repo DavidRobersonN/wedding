@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section id="invitation" class="section-padding bg-gray">
+        <div id="qbootstrap-invitation" data-section="invitation">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-12 text-center section-heading svg-sm colored">
+                            <img src="{% static 'images/wed-ceremony.jpg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
+                            <h2>Convite de Casamento</h2>
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 subtext">
+                                    <h3>Olá, {{ name }}!</h3>
+                                    <p>Você está convidado(a) para o nosso casamento.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

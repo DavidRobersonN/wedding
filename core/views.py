@@ -1,15 +1,17 @@
-from django.views.generic import TemplateView
+from django.views.generic import View, TemplateView
 from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor, Saudacao, NossoBlog
-from django.http import Http404
+from django.http import Http404, HttpResponse
+
 #########
 import tempfile
 from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
 from weasyprint import HTML
 ######
-from django.shortcuts import redirect
+
 from .models import Guest
 from django.shortcuts import render
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -36,9 +38,24 @@ class IndexView(TemplateView):
         return context
 
 
-def check_guest(request):
+class CheckGuestView(View):
 
-    if request.method == "POST":
+    def post(self, request, *args, **kwargs):
         name = request.POST.get("name")
+
         if Guest.objects.filter(name=name).exists():
-            return render(request, 'home.html')
+            # Renderizando o conteúdo HTML em string
+            html_string = render_to_string('invitation.html', {'name': name})
+            pdf_path = 'C:/Users/55119/PycharmProjects/Wedding/convite.pdf'  # Caminho absoluto para o diretório onde deseja salvar o arquivo PDF
+
+            try:
+                html = HTML(string=html_string)  # Passando essa string que foi gerada para weasyPrint
+                html.write_pdf(target=pdf_path)  # Transformando em PDF e criando no diretório especificado
+
+                # Abrindo e retornando o arquivo PDF gerado como resposta HTTP
+                with open(pdf_path, 'rb') as pdf_file:
+                    response = HttpResponse(pdf_file.read(), content_type='application/pdf')
+                    response['Content-Disposition'] = 'attachment; filename="invitation.pdf"'
+                    return response
+            except Exception as e:
+                return HttpResponse(f'Erro ao gerar o PDF: {e}', status=500)
