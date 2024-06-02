@@ -5,7 +5,7 @@ deployments:
         healthcheckPath: /health
         envVars:
           DJANGO_SETTINGS_MODULE: wedding.settings
-          DATABASE_URL: ${{ DATABASE_URL }}
+          DATABASE_URL: postgresql://postgres:ndxEWTtEhyRCARRULGsXyzpjEZTByInO@viaduct.proxy.rlwy.net:33117/railway
         build:
           command: |
             pip install -r requirements.txt
