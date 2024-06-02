@@ -46,7 +46,7 @@ class CheckGuestView(View):
         if Guest.objects.filter(name=name).exists():
             # Renderizando o conteúdo HTML em string
             html_string = render_to_string('invitation.html', {'name': name})
-            pdf_path = 'C:/Users/55119/PycharmProjects/Wedding/convite.pdf'  # Caminho absoluto para o diretório onde deseja salvar o arquivo PDF
+            pdf_path = '//convite.pdf'  # Caminho absoluto para o diretório onde deseja salvar o arquivo PDF
 
             try:
                 html = HTML(string=html_string)  # Passando essa string que foi gerada para weasyPrint
