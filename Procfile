@@ -1,1 +1,1 @@
-web:gunicorn wedding.wsgi
+web: gunicorn wedding.wsgi
