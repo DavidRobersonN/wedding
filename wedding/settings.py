@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'wedding.urls'
+ROOT_URLCONF = 'Wedding.urls'
 
 TEMPLATES = [
     {
