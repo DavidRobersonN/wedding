@@ -6,7 +6,6 @@ deployments:
         envVars:
           DJANGO_SETTINGS_MODULE: wedding.settings
           DATABASE_URL: ${{ DATABASE_URL }}
-          SECRET_KEY: ${{ SECRET_KEY }}
         build:
           command: |
             pip install -r requirements.txt
