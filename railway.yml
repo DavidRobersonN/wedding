@@ -2,9 +2,9 @@ railway:
   deployments:
     - services:
         - name: web
-          startCommand: gunicorn wedding.wsgi:application --bind 0.0.0.0:8000
+          startCommand: gunicorn wedding.wsgi:application
           healthcheckPath: /health
           envVars:
             DJANGO_SETTINGS_MODULE: wedding.settings
-            DATABASE_URL: DATABASE_URL
-            SECRET_KEY: SECRET_KEY
+            DATABASE_URL: $DATABASE_URL
+            SECRET_KEY: $SECRET_KEY
