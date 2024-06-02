@@ -2,16 +2,6 @@ from django.views.generic import TemplateView
 from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor, Saudacao, NossoBlog
 from django.http import Http404
 
-#########
-import tempfile
-from django.core.files.storage import FileSystemStorage
-from django.template.loader import render_to_string
-from weasyprint import HTML
-######
-
-from django.shortcuts import render
-
-
 class IndexView(TemplateView):
     template_name = 'index.html'
 
