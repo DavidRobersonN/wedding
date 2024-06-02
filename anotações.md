@@ -1,4 +1,5 @@
 PROJETO WEB SITE WEDDING
+""""""""
 
 Após criar o projeto no pycharme, fazer a instalação de algumas bibliotecas:
     pip install django psycopg2-binary gunicorn dj-static django-stdimage
