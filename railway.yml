@@ -1,3 +1,14 @@
-variables:
-  DATABASE_URL: postgresql://postgres:ndxEWTtEhyRCARRULGsXyzpjEZTByInO@viaduct.proxy.rlwy.net:33117/railway
-  SECRET_KEY: 'django-insecure-7f1l3@jzw(&1*o9)hf0bzh(udzly_2vrkg0umq0!y6vl$v+g^='
+deployments:
+  - services:
+      - name: web
+        startCommand: gunicorn wedding.wsgi:application --bind 0.0.0.0:8000
+        healthcheckPath: /health
+        envVars:
+          DJANGO_SETTINGS_MODULE: wedding.settings
+          DATABASE_URL: ${{ DATABASE_URL }}
+          SECRET_KEY: ${{ SECRET_KEY }}
+        build:
+          command: |
+            pip install -r requirements.txt
+            python manage.py collectstatic --noinput
+            python manage.py migrate
