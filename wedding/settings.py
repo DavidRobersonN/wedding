@@ -1,21 +1,9 @@
 import os
 from pathlib import Path
 import dj_database_url
-from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
-
 # Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
-
-
-# Função para obter variáveis de ambiente
-def get_env_variable(var_name):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = f"Set the {var_name} environment variable"
-        raise ImproperlyConfigured(error_msg)
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,12 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = int(os.environ.get('DJANGO_DEBUG', default=0))
 
-ALLOWED_HOSTS = [get_env_variable('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = str(os.environ.get('DJANGO_ALLOWED_HOSTS')).split(',')
 
 # Application definition
 
@@ -77,10 +65,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'wedding.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+DATABASES = {'default': dj_database_url.config(default=os.environ.get('DJANGO_DATABASE_URL'))}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -115,15 +102,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-"""
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-"""
-
-# Simplified static file serving.
-# https://whitenoise.evans.io/en/stable/django.html
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
