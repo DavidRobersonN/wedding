@@ -61,9 +61,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wedding.wsgi.application'
 
-"""
+
 # Database
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DJANGO_DATABASE_URL'))}
+
 """
 DATABASES = {
     'default': {
@@ -75,6 +76,8 @@ DATABASES = {
         'PORT': '5433',
     }
 }
+"""
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
