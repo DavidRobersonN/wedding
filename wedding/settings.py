@@ -46,6 +46,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'wedding.urls'
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
