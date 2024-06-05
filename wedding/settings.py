@@ -17,6 +17,7 @@ DEBUG = int(os.environ.get('DJANGO_DEBUG', default=0))
 allowed_hosts_string = os.environ.get('DJANGO_ALLOWED_HOSTS', '*')
 allowed_hosts_list = [host.strip() for host in allowed_hosts_string.split(',')]
 ALLOWED_HOSTS = allowed_hosts_list
+CSRF_TRUSTED_ORIGINS = ['https://wedding-production-9b77.up.railway.app']
 
 # Application definition
 
