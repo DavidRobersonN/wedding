@@ -7,7 +7,7 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-CSRF_TRUSTED_ORIGINS = ['wedding-production-9b77.up.railway.app']
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
@@ -17,7 +17,7 @@ DEBUG = int(os.environ.get('DJANGO_DEBUG', default=0))
 allowed_hosts_string = os.environ.get('DJANGO_ALLOWED_HOSTS', '*')
 allowed_hosts_list = [host.strip() for host in allowed_hosts_string.split(',')]
 ALLOWED_HOSTS = allowed_hosts_list
-CSRF_TRUSTED_ORIGINS = ['https://wedding-production-9b77.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://wedding-production-9b77.up.railway.app/admin']
 
 # Application definition
 
