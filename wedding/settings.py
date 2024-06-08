@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-import dj_database_url
 from dotenv import load_dotenv
 # Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
@@ -11,15 +10,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = int(os.environ.get('DJANGO_DEBUG', default=0))
-
-"""
-allowed_hosts_string = os.environ.get('DJANGO_ALLOWED_HOSTS', '*')
-allowed_hosts_list = [host.strip() for host in allowed_hosts_string.split(',')]
-ALLOWED_HOSTS = allowed_hosts_list
-CSRF_TRUSTED_ORIGINS = ['https://wedding-production-9b77.up.railway.app']
-"""
 # Application definition
 
 INSTALLED_APPS = [
@@ -64,23 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wedding.wsgi.application'
 
-
-# Database
-#DATABASES = {'default': dj_database_url.config(default=os.environ.get('DJANGO_DATABASE_URL'))}
-
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'wedding',
-        'USER': 'postgres',
-        'PASSWORD': '159635',
-        'HOST': 'localhost',
-        'PORT': '5433',
-    }
-}
-"""
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -96,9 +69,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -107,19 +77,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-"""
-# Email backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-"""

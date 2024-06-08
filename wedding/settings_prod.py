@@ -1,4 +1,5 @@
 from .settings import *
+import dj_database_url
 
 DEBUG = False
 ALLOWED_HOSTS = ['wedding-production-9b77.up.railway.app']
