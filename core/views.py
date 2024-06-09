@@ -1,8 +1,9 @@
 from django.views.generic import TemplateView
 from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor, Saudacao, NossoBlog
 from django.http import Http404
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
@@ -26,3 +27,5 @@ class IndexView(TemplateView):
         context['blog'] = NossoBlog.objects.all()
         return context
 
+class LoginView(TemplateView):
+    template_name = 'login.html'
