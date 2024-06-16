@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor, Saudacao, NossoBlog
 
-
 @admin.register(Padrinho)
 class PadrinhoAdmin(admin.ModelAdmin):
     list_display = ('nome',)
