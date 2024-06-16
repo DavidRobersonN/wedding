@@ -104,5 +104,5 @@ SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 # configurações para Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '7882417811853822'
 SOCIAL_AUTH_FACEBOOK_SECRET = '4bb874e4cf41f610bb2737d06d0530b1'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+#SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_REDIRECT_URI = 'https://wedding-production-9b77.up.railway.app/social-auth/complete/facebook/'
