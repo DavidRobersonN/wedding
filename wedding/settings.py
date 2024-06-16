@@ -33,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'wedding.urls'
@@ -96,12 +97,12 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
-
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # configurações para Facebook
-SOCIAL_AUTH_FACEBOOK_KEY = '427106586798043'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'da947dd9db68eac0f93ced43cd2cef98'
+SOCIAL_AUTH_FACEBOOK_KEY = '7882417811853822'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4bb874e4cf41f610bb2737d06d0530b1'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id, name, email, picture.type(large), link'
