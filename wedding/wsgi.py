@@ -12,6 +12,6 @@ import os
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling, MediaCling
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wedding.settings_prod')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wedding.settings_dev')
 
 application = Cling(MediaCling(get_wsgi_application()))
