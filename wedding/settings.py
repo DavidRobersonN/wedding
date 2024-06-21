@@ -85,9 +85,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'core' / 'static',   # Caminho para os arquivos estáticos do aplicativo 'core'
+    BASE_DIR / 'conta' / 'static',  # Caminho para os arquivos estáticos do aplicativo 'conta'
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Caminho onde os arquivos estáticos serão coletados
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Caminho onde os arquivos de mídia serão armazenados
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
