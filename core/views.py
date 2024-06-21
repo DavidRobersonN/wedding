@@ -3,8 +3,6 @@ from .models import Noiva, Noivo, Padrinho, Madrinha, Casamento, HistoriaDeAmor,
 from django.http import Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class LoginView(TemplateView):
-    template_name = 'login.html'
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
@@ -29,5 +27,3 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context['historias'] = HistoriaDeAmor.objects.all()
         context['blog'] = NossoBlog.objects.all()
         return context
-
-

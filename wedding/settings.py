@@ -15,6 +15,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 INSTALLED_APPS = [
     'core',
+    'conta',
     'bootstrap4',
     'stdimage',
     'social_django',
