@@ -9,7 +9,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': os.environ.get('DJANGO_KEY_DATABASES_LOCAL'),
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 # Qualquer outra configuração específica de desenvolvimento
