@@ -3,10 +3,6 @@ from django.db import models
 import uuid
 from stdimage.models import StdImageField
 
-"""
-teste
-"""
-
 
 def get_file_path(_instance, filename):
     ext = filename.split('.')[-1]
@@ -143,3 +139,15 @@ class NossoBlog(Base):
 
     def __str__(self):
         return self.titulo
+
+
+class Convidados(models.Model):
+    nome = models.CharField('Nome', max_length=100, null=True,
+                            blank=True)
+
+    class Meta:
+        verbose_name = 'Convidado'
+        verbose_name_plural = 'Convidados'
+
+    def __str__(self):
+        return self.nome

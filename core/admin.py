@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor, Saudacao, NossoBlog
+from .models import Padrinho, Madrinha, Noiva, Noivo, Casamento, HistoriaDeAmor, Saudacao, NossoBlog, Convidados
+
+@admin.register(Convidados)
+class ConvidadosAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
 
 @admin.register(Padrinho)
 class PadrinhoAdmin(admin.ModelAdmin):
