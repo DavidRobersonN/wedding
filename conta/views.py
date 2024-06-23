@@ -22,3 +22,4 @@ def login_view(request):
             return render(request, 'login.html', {'error_message': 'Invalid username or password'})
     else:
         return render(request, 'login.html')  # Renderizar a página de login em caso de solicitação GET
+
