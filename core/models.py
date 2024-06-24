@@ -141,9 +141,7 @@ class NossoBlog(Base):
         return self.titulo
 
 
-class Convidados(models.Model):
-    nome = models.CharField('Nome', max_length=100, null=True,
-                            blank=True)
+class Convidados(Base):
 
     class Meta:
         verbose_name = 'Convidado'
