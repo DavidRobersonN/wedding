@@ -9,6 +9,11 @@
 					<div class="col-md-12 text-center section-heading svg-sm-2 colored">
 						<img src="{% static 'images/flaticon/svg/002-wedding-couple.svg' %}" class="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com">
 						<h2>Convite de Casamento</h2>
+						{% if error_message %}
+							<div class="error">
+								{{ error_message }}
+							</div>
+    					{% else %}
 						<p>Olá, {{ nome }}! Você esta na lista de convidados</p>
 					</div>
 				</div>
@@ -126,4 +131,5 @@
 			</div>
 		</div>
 	</section>
+	{% endif %}
 {% endblock %}
