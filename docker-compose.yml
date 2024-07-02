@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - nginx
+    command: ["sh", "-c", "python manage.py migrate && gunicorn wedding.wsgi:application --bind 0.0.0.0:8000"]
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./app/staticfiles:/app/staticfiles
+    ports:
+      - "80:80"
